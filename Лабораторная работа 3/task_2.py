@@ -1,14 +1,15 @@
-# TODO Напишите функцию find_common_participants
+# Функция для поиска общих участников
 def find_common_participants(group1, group2, delimiter=","):
-    # Разделение строк участников на списки
-    set1 = set(group1.split(delimiter))
-    set2 = set(group2.split(delimiter))
+    # Создаем множество только для первой группы
+    set_group1 = set(group1.split(delimiter))
 
-    # Находим общих участников, сортируем и возвращаем
-    common_participants = sorted(set1 & set2)
+    # Находим пересечения с помощью списка, проверяя участников второй группы
+    common_participants = sorted([participant for participant in group2.split(delimiter) if participant in set_group1])
+
     return common_participants
 
 
+# Пример использования функции
 participants_first_group = "Иванов|Петров|Сидоров"
 participants_second_group = "Петров|Сидоров|Смирнов"
 
