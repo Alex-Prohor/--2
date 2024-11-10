@@ -1,10 +1,13 @@
-# TODO Напишите функцию для поиска индекса товара
+# Функция для поиска индекса первого вхождения элемента в списке
 def find_item_index(items_list, item):
-    try:
-        return items_list.index(item)
-    except ValueError:
-        return None
+    # Перебираем список с использованием enumerate для получения индекса и значения
+    for i, current_item in enumerate(items_list):
+        # Если текущий элемент равен искомому
+        if current_item == item:
+            return i  # Возвращаем индекс
+    return None  # Если элемент не найден, возвращаем None
 
+# Пример использования функции
 items_list = ['яблоко', 'банан', 'апельсин', 'груша', 'киви', 'банан']
 
 for find_item in ['банан', 'груша', 'персик']:

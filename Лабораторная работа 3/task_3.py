@@ -1,17 +1,26 @@
-# TODO Напишите функцию count_letters
+# Функция для подсчета количества каждой буквы в тексте
 def count_letters(text):
     letter_counts = {}
-    for char in text.lower():  # Приводим текст к нижнему регистру
+    text = text.lower()  # Приводим текст к нижнему регистру
+
+    for char in text:
         if char.isalpha():  # Проверяем, является ли символ буквой
-            letter_counts[char] = letter_counts.get(char, 0) + 1
+            # Используем if вместо get для проверки первого вхождения
+            if char in letter_counts:
+                letter_counts[char] += 1
+            else:
+                letter_counts[char] = 1
     return letter_counts
 
-# TODO Напишите функцию calculate_frequency
+
+# Функция для вычисления частоты каждой буквы
 def calculate_frequency(letter_counts):
     total_letters = sum(letter_counts.values())
     frequency = {letter: round(count / total_letters, 2) for letter, count in letter_counts.items()}
     return frequency
 
+
+# Тестовый текст
 main_str = """
 У лукоморья дуб зелёный;
 Златая цепь на дубе том:
